@@ -1,27 +1,20 @@
+function translatePigLatin(str) {
+  var vowels = ["a", "e", "i", "o", "u"],
+    result = str.split('');  // split words into different elements
 
-// other variables
-// var re = /["0","9"]+/;
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var notPigLatinNumber = ("Not Pig Latin, it's a number");
+    if (vowels.includes(str.charAt(0))) {
+      return str += 'ay';  // if vowel is, append 'ay' at the end
+    } else {  //
+      for (var i = 0; i < str.length; i++) {
+       if (!vowels.includes(str[i])) {
+         result.push(result.shift());
+       } else {
+         result.push('ay');
+         return result.join('');
+       }
+       }
+      }
+    }
 
-
-numbers.forEach(function(before){
-  if (numbers === before){
-  return notPigLatinNumber;
-  }
-});
-
-
-$(document).ready(function(){
-  $("form#translate").submit(function(event) {
-
-    var english = $("#translator").val();
-    alert(english);
-
-    $("#result").text(english);
-    var output = translation(english);
-    alert(output);
-    event.preventDefault();
-
-  });
-});
+var results = (translatePigLatin("oil"));
+alert(results);
